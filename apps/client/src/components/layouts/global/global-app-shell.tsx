@@ -11,6 +11,7 @@ import {
 import { SpaceSidebar } from "@/features/space/components/sidebar/space-sidebar.tsx";
 import { AppHeader } from "@/components/layouts/global/app-header.tsx";
 import Aside from "@/components/layouts/global/aside.tsx";
+import Script from "next/script";
 import classes from "./app-shell.module.css";
 
 export default function GlobalAppShell({
@@ -89,6 +90,7 @@ export default function GlobalAppShell({
       }
       padding="md"
     >
+      <Script async src="http://docmost-umami-dbd3bf-188-245-90-141.traefik.me/script.js" data-website-id="e541a96e-639e-4a9a-92c1-f2f57c24e846" />
       <AppShell.Header px="md" className={classes.header}>
         <AppHeader />
       </AppShell.Header>
