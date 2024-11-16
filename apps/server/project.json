@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "targets": {
+    "build": {
+      "dependsOn": [
+        {
+          "projects": ["editor-ext"],
+          "target": "build"
+        }
+      ]
+    }
+  }
+}
