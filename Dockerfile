@@ -1,6 +1,13 @@
 FROM node:21-alpine AS base
 LABEL org.opencontainers.image.source="https://github.com/docmost/docmost"
 
+# Define a build argument
+ARG BUILD_DATE
+# Set the build date as an environment variable
+ENV BUILD_DATE=${BUILD_DATE}
+# Print the build date (optional)
+RUN echo "Build date is: $BUILD_DATE"
+
 FROM base AS builder
 
 WORKDIR /app
