@@ -1,13 +1,24 @@
 {
   "name": "server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/server/src",
+  "projectType": "application",
   "targets": {
     "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/server",
+        "main": "apps/server/src/main.ts",
+        "tsConfig": "apps/server/tsconfig.json"
+      },
       "dependsOn": [
         {
-          "projects": ["editor-ext"],
+          "projects": ["@docmost/editor-ext"],
           "target": "build"
         }
       ]
     }
-  }
+  },
+  "tags": []
 }
