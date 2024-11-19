@@ -12,8 +12,31 @@ import { InternalLogFilter } from './common/logger/internal-log-filter';
 import fastifyCookie from '@fastify/cookie';
 
 async function bootstrap() {
-  console.log('process.env', process.env);
-  
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USERNAME,
+        pass: process.env.SMTP_PASSWORD,
+      },
+    });
+
+    const info = await transporter.sendMail({
+      from: '"VReal Soft 👻" <developer@vrealsoft.com>', // sender address
+      to: 'igormostovenko@gmail.com', // list of receivers
+      subject: 'Hello ✔', // Subject line
+      text: 'Hello world?', // plain text body
+      html: '<b>Hello world?</b>', // html body
+    });
+
+    console.log('Message sent', info);
+  } catch (e) {
+    console.error(e);
+  }
+
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({
