@@ -12,6 +12,8 @@ import { InternalLogFilter } from './common/logger/internal-log-filter';
 import fastifyCookie from '@fastify/cookie';
 
 async function bootstrap() {
+  console.log('process.env', process.env);
+  
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({
