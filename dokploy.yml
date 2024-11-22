@@ -1,0 +1,7 @@
+services:
+  app:
+    docker:
+      build_args:
+        - --no-cache
+      file: ./Dockerfile
+      context: .
