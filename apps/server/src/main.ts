@@ -15,6 +15,12 @@ import * as nodemailer from 'nodemailer';
 async function bootstrap() {
 
   try {
+    console.log('host', process.env.SMTP_HOST);
+    console.log('port', Number(process.env.SMTP_PORT));
+    console.log('secure', process.env.SMTP_SECURE === 'true');
+    console.log('auth.user', process.env.SMTP_USERNAME);
+    console.log('auth.pass', process.env.SMTP_PASSWORD);
+    
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -23,6 +29,8 @@ async function bootstrap() {
         user: process.env.SMTP_USERNAME,
         pass: process.env.SMTP_PASSWORD,
       },
+      debug: true,
+      logger: true,
     });
 
     const info = await transporter.sendMail({
