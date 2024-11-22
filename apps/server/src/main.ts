@@ -10,6 +10,7 @@ import fastifyMultipart from '@fastify/multipart';
 import { WsRedisIoAdapter } from './ws/adapter/ws-redis.adapter';
 import { InternalLogFilter } from './common/logger/internal-log-filter';
 import fastifyCookie from '@fastify/cookie';
+import * as nodemailer from 'nodemailer';
 
 async function bootstrap() {
 
